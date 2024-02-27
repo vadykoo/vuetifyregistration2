@@ -18,19 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+        'phone_book_id'
     ];
 
     /**
@@ -41,4 +31,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function countries()
+    {
+        return $this->belongsToMany(
+            Country::class,
+            'user_countries',
+            'user_id',
+            'country_id'
+        );
+    }
+
+    public function phone()
+    {
+        return $this->hasOne(PhoneBook::class, 'id', 'phone_book_id');
+    }
 }
