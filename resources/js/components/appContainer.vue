@@ -83,7 +83,7 @@ export default {
                     // Reset form fields after successful submission
                     this.fullName = '';
                     this.selectedCountry = 'Israel';
-                    this.phoneNumber = '';
+                    // this.phoneNumber = '';
                     this.email = '';
                     this.formErrors = {}; // Clear form errors
                 })

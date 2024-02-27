@@ -7,7 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Deploy
+## Test aplication with laravel 8, vue2 and vuetify
+
+## Deployment
 
 Copy env.example and rename new one to .env
 create database and put to env file database credentials
@@ -22,6 +24,9 @@ php artisan serve
 
 and go to localhost
 ```
-## About Laravel
+## Screenshots
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Screenshot](/example_images/form1.png)
+![Screenshot](/example_images/form.png)
+![Screenshot](/example_images/errorExample.png)
+![Screenshot](/example_images/tables.png)
