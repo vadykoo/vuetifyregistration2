@@ -23,7 +23,7 @@ Vue.use(VueMask);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('app-container', require('./components/appContainer.vue').default);
+Vue.component('app-container', require('./components/RegisterComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

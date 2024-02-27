@@ -14,14 +14,13 @@
                                         class="custom-input"></v-text-field>
                                     <v-select label="Country" v-model="selectedCountry" :items="countries" outlined
                                         class="custom-input" item-color="primary" item-value="name" item-text="nameWithFlag"
-                                        append-icon="mdi-menu-down"></v-select>
+                                        append-icon="mdi-menu-down" @change="onChangeCountry"></v-select>
                                     <!-- Phone number input with v-mask -->
-                                    <v-text-field label="Phone number" v-model="formattedPhoneNumber"
+                                    <v-text-field label="Phone number" v-model="phoneNumber"
                                         v-mask="'+### ## ###-##-##'" outlined class="custom-input"></v-text-field>
 
                                     <v-text-field label="Email" v-model="email" outlined
                                         class="custom-input"></v-text-field>
-
                                     <!-- Display errors if any -->
                                     <v-alert v-if="hasErrors" type="error" class="mt-4">
                                         <ul>
@@ -58,21 +57,23 @@ export default {
         };
     },
     computed: {
-        formattedPhoneNumber() {
-            const countryCode = this.countries.find(country => country.name === this.selectedCountry)?.idd || '';
-            return `${countryCode} ${this.phoneNumber}`;
-        },
         hasErrors() {
             return Object.keys(this.formErrors).length > 0;
         }
     },
     methods: {
+        countryCode() {
+            return this.countries.find(country => country.name === this.selectedCountry)?.idd || '';
+        },
+        onChangeCountry() {
+            this.phoneNumber = this.countryCode();
+        },
         submitForm() {
             // Send POST request to api/register with form data
             const formData = {
                 fullName: this.fullName,
                 selectedCountry: this.selectedCountry,
-                phoneNumber: this.formattedPhoneNumber,
+                phoneNumber: this.phoneNumber,
                 email: this.email
             };
 
@@ -97,6 +98,9 @@ export default {
                     }
                 });
         }
+    },
+    mounted() {
+        this.onChangeCountry()
     }
 };
 </script>

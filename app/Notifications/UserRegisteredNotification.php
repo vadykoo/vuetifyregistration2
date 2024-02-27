@@ -14,11 +14,21 @@ class UserRegisteredNotification extends Notification
 
     public function via()
     {
-        return [SMSChannel::class];
+        return [
+            SMSChannel::class,
+            //'mail' // 'mail' as a notification channel can be used
+        ];
     }
 
     public function toSMS()
     {
         return 'Welcome to our application! Thank you for registering.';
+    }
+
+    public function toMail()
+    {
+        return (new MailMessage)
+            ->subject('Welcome to Our Application')
+            ->line('Welcome to our application! Thank you for registering.');
     }
 }
