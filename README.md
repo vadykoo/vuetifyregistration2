@@ -8,6 +8,7 @@
 </p>
 
 ## Test aplication with laravel 8, vue2 and vuetify
+This app has a frontend registration form and a backend that validates data, saves data in DB, and triggers a Laravel event named UserRegistered
 
 ## Deployment
 
